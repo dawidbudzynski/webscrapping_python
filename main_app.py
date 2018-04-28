@@ -35,7 +35,7 @@ for page in range(0, int(last_page_no) * 10, 10):
         try:
             area = item.find('span', {'class', 'infoSqFt'}).find('b').text
         except AttributeError:
-            area = 'None'
+            area = None
 
         lot_size = None
         for column_group in item.find_all('div', {'class': 'columnGroup'}):
@@ -55,4 +55,4 @@ for page in range(0, int(last_page_no) * 10, 10):
 
 df = pandas.DataFrame(list_all_info)
 df.to_csv('result.csv')
-df.to_excel('result_spreadsheet.xlsx')
+
